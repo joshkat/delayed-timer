@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body data-theme="">
+    <div
+      id="app"
+      class="flex items-center justify-center flex-col h-full"
+    >
+    <!-- modal for errors -->
+    <dialog id="error-modal" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Bad Inputs!</h3>
+        <p class="py-4">
+
+          Your minutes and seconds need to be &#60;= 59 <br>
+          Be sure to check and see that youre using a number for all inputs
+          
+
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+      <form id="input" method="dialog" class="flex flex-col align-center ">
+        <div class="mb-4">
+          <label>
+            <div class="label">
+              <span class="label-text">Minutes</span>
+              <span class="label-text-alt">Seconds</span>
+            </div>
+            <input class="input input-bordered sm:w-min w-40" type="number" placeholder="minutes" value="1"/>
+            :
+            <input class="input input-bordered sm:w-min w-40" type="number" placeholder="seconds" value="0"/>
+          </label>
+        </div>
+        
+        <input class="input input-bordered mb-4" type="number" placeholder="delay (seconds)"></input>
+        
+        <button class="btn" id="">Start Timer</button>
+      </form>
+
+      <div id="delay-countdown" class="flex flex-col hidden">
+        <span class="countdown font-mono text-6xl">
+          <span style="--value:00;"></span>
+        </span>
+        delay (sec)        
+      </div>
+      
+      <div id="full-countdown" class="flex flex-col hidden">
+        <div class="grid grid-flow-col gap-5 text-center auto-cols-max mb-4">
+          <div class="flex flex-col">
+            <span class="countdown font-mono text-5xl">
+              <span style="--value:00;" id="full-min"></span>
+            </span>
+            min
+          </div> 
+          <div class="flex flex-col">
+            <span class="countdown font-mono text-5xl">
+              <span style="--value:00;" id="full-sec"></span>
+            </span>
+            sec
+          </div>
+        </div>
+        <button class="btn" id="reset-btn">Reset Timer</button>
+      </div>
+
+    </div>
+    <audio id="timer-finished" src="/finished-timer.mp3" preload="auto"></audio>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
