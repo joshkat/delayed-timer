@@ -16,7 +16,13 @@ inputForm.addEventListener("submit", (e) => {
     return;
   }
 
-  showDelayTimer(min, sec, delay);
+  if(delay == 0){
+    inputForm.classList.add("hidden");
+    showFullTimer(min, sec);
+    return;
+  } else {
+    showDelayTimer(min, sec, delay);
+  }
 });
 
 function inputCheck(min, sec, delay) {
